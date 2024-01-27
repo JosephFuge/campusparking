@@ -36,7 +36,54 @@
             </div>
         </div>
     </nav>
-    <div class="login-container">
+    <div id="loginRegisterBox" class="login-container">
+        <button type="button" onclick="showLogin();">Login</button>
+        <br>
+        <button type="button" onclick="showRegister();">Sign Up</button>
+    </div>
+    <div id="registerBoxes">
+        <div id="registerLeft" class="login-container">
+            <h2>Look For Spots to Rent</h2>
+            <form action="#" method="post">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <p class="login-error-text" id="loginError"></p>
+
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+        
+                <button type="button" onclick="loginUser();">Login</button>
+                <button type="button" onclick="registerUser();">Register</button>
+            </form>
+        </div>
+        <div id="registerRight" class="login-container">
+            <h2>Rent Out My Spot</h2>
+            <form action="#" method="post">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <p class="login-error-text" id="loginError"></p>
+
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+        
+                <button type="button" onclick="loginUser();">Login</button>
+                <button type="button" onclick="registerUser();">Register</button>
+            </form>
+        </div>
+    </div>
+    <div id="loginBox" class="login-container">
         <h2>Login</h2>
         <form action="#" method="post">
             <label for="email">Email</label>
@@ -46,14 +93,7 @@
             <input type="password" id="password" name="password" required>
             <p class="login-error-text" id="loginError"></p>
 
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" required>
-
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" required>
-    
             <button type="button" onclick="loginUser();">Login</button>
-            <button type="button" onclick="registerUser();">Register</button>
         </form>
     </div>
     <br><br><br><br><br><br><br><br>

@@ -64,7 +64,7 @@ app.get("/map", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("map");
 });
 
 app.get("/login", (req, res) => {

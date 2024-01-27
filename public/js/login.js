@@ -43,3 +43,25 @@ async function registerUser() {
         loginError.style.display = 'block';
     }
 }
+
+function showLogin() {
+    const loginSignupChoiceEle = document.getElementById('loginRegisterBox'); 
+    loginSignupChoiceEle.style.display = "none";
+    
+    const loginEle = document.getElementById('loginBox');
+    loginEle.style.display = 'block';
+}
+
+function showRegister() {
+    const loginSignupChoiceEle = document.getElementById('loginRegisterBox'); 
+    loginSignupChoiceEle.style.display = "none";
+    
+    const registerBoxesEle = document.getElementById('registerBoxes');
+    const registerLeftEle = document.getElementById('registerLeft');
+    const registerRightEle = document.getElementById('registerRight');
+    
+    registerLeftEle.style.display = "inline-block";
+    registerRightEle.style.display = "inline-block";
+    
+    registerBoxesEle.style.display = "flex";
+}

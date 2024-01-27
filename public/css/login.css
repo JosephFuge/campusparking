@@ -64,3 +64,34 @@ button:hover {
     color: red;
     display: none;
 }
+
+#registerLeft, #registerRight {
+    display: none;
+    width: 45%; /* Example width, adjust as needed */
+    margin: 0 2.5%; /* Example margin, adjust as needed */
+    vertical-align: top; /* To align them at the top if they have different content lengths */
+}
+
+/* #registerLeft, #registerRight {
+    display: inline-block;
+} */
+
+#registerBoxes, #loginBox {
+    display: none;
+}
+
+#registerBoxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/* #registerBoxes {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+} */
