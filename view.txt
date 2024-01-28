@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provo Parking Solution</title>
     <!-- Linking an external stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <h1>Provo Parking Solution</h1>
     <div id="map-container">
         <!-- The map will be displayed here -->
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYKlll1uqfnRYvQ0AP5zNWRIpMJyIdayo&callback=initMap&libraries=maps,marker&v=beta"></script>
         <script>
             var map;
             var infoWindow;
@@ -150,8 +151,6 @@
                 geocodeAddress(address, buyNowButton);
             
         </script>
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYKlll1uqfnRYvQ0AP5zNWRIpMJyIdayo&callback=initMap&libraries=maps,marker&v=beta"></script>
-
     </div>
 
     <div id="feed-container">
