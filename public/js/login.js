@@ -14,7 +14,7 @@ async function loginUser() {
 
     if (response.ok) {
         localStorage.setItem('username', userName);
-        window.location.href = '/map';
+        window.location.href = '/auth/map';
     } else {
         const body = await response.json();
         const bodyText = body.message;
@@ -27,11 +27,15 @@ async function loginUser() {
 async function registerUser() {
     const username = document.getElementById("email").value;
     const userPassword = document.getElementById("password").value;
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const venmo = document.getElementById('venmo').value;
+    const phoneNum = document.getElementById('phoneNumber').value;
 
-    let registerResponse = await fetch('/createUser', {
+    let registerResponse = await fetch('/api/createUser', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
-        body: JSON.stringify({username: username, password: userPassword}),
+        body: JSON.stringify({username: username, password: userPassword, firstName: firstName, lastName: lastName, venmo: venmo, phoneNumber: phoneNum}),
       });
     
     if (registerResponse.ok) {
@@ -42,4 +46,35 @@ async function registerUser() {
         loginError.innerHTML = 'Couldn\'t register user - try a different email';
         loginError.style.display = 'block';
     }
+}
+
+function showLogin() {
+    const loginSignupChoiceEle = document.getElementById('loginRegisterBox'); 
+    loginSignupChoiceEle.style.display = "none";
+    document.getElementById('registerBoxes').style.display = "none";
+    
+    const loginEle = document.getElementById('loginBox');
+    loginEle.style.display = 'block';
+}
+
+function showLoginRegister() {
+    document.getElementById('loginRegisterBox').style.display = "block";
+    document.getElementById('registerLeft').style.display = "none";
+
+    const loginEle = document.getElementById('loginBox')
+    if (loginEle.style.display != 'none') {
+        loginEle.style.display = "none";
+    }
+}
+
+function showRegister() {
+    const loginSignupChoiceEle = document.getElementById('loginRegisterBox'); 
+    loginSignupChoiceEle.style.display = "none";
+    
+    const registerBoxesEle = document.getElementById('registerBoxes');
+    const registerLeftEle = document.getElementById('registerLeft');
+    
+    registerLeftEle.style.display = "inline-block";
+    
+    registerBoxesEle.style.display = "flex";
 }

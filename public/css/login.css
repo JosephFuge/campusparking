@@ -64,3 +64,58 @@ button:hover {
     color: red;
     display: none;
 }
+
+#registerLeft, #registerRight {
+    display: none;
+    width: 45%; /* Example width, adjust as needed */
+    margin: 0 2.5%; /* Example margin, adjust as needed */
+    vertical-align: top; /* To align them at the top if they have different content lengths */
+}
+
+/* #registerLeft, #registerRight {
+    display: inline-block;
+} */
+
+#registerBoxes, #loginBox {
+    display: none;
+}
+
+#registerBoxes {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/* #registerBoxes {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+} */
+    
+footer {
+    width: 100%;
+}
+
+#signupHeader, #loginHeader {
+    display: flex;
+    justify-content: space-between; /* This spreads out the child elements */
+    align-items: center; /* This vertically centers the child elements */
+    width: 100%;
+}
+
+#signupHeader > *, #loginHeader > * { 
+    display: inline;
+}
+
+#signupHeader > button, #loginHeader > * {
+    margin-right: auto; 
+}
+
+#signupHeader > h2, #loginHeader > * {
+    margin-left: 20px; /* Adjust as needed */
+    margin-right: auto;
+}
