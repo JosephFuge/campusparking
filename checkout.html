@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <!-- Linking an external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <div id="checkout-title">
+        <h2>Checkout</h2>
+    </div>
+    
+
+    <div id="checkout-info">
+        <p id="address">Address: </p>
+        <p id="rate">Rate: </p>
+       
+        <p>Directions: Text this person for more information about the spot and Venmo them.</p>
+    </div>
+
+    <script>
+        // Extract parameters from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var address = urlParams.get('address');
+        var rate = urlParams.get('rate');
+
+        // Display information on the checkout page
+    
+        document.getElementById('address').textContent += address;
+        document.getElementById('rate').textContent += rate;
+    </script>
+
+</body>
+
+</html>

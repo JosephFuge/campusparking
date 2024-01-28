@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <h1>Provo Parking Solution</h1>
     <div id="map-container">
         <!-- The map will be displayed here -->
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYKlll1uqfnRYvQ0AP5zNWRIpMJyIdayo&callback=initMap&libraries=maps,marker&v=beta"></script>
@@ -43,8 +43,7 @@
 
                         // Info window content
                         var rate = document.getElementById('rate');
-                        var name = document.getElementById('name');
-                        var infoContent = `<div><strong>${name.value}</strong><br>Address: ${address}<br>Rate: ${rate.value}</div>`;
+                        var infoContent = `<div><strong>Address: ${address}</strong><br>Rate: ${rate.value}</div>`;
 
                         marker.addListener('click', function () {
                             infoWindow.setContent(infoContent);
@@ -57,7 +56,7 @@
                         // Clear the form fields
                         document.getElementById("address").value = "";
                         document.getElementById("rate").value = "";
-                        document.getElementById("name").value = "";
+                       
 
                         // Add a reference to the marker in the Buy Now button
                         buyNowButton.marker = marker;
@@ -66,7 +65,7 @@
 
                         document.getElementById("address").value = "";
                         document.getElementById("rate").value = "";
-                        document.getElementById("name").value = "";
+                       
                     }
                 });
             }
@@ -81,15 +80,33 @@
                 }
             }
 
+            function filterParkingSpots() {
+                var searchInput = document.getElementById("search").value.toLowerCase();
+                var parkingFeed = document.getElementById("parking-feed");
+                var parkingSpots = parkingFeed.getElementsByClassName("parking-spot");
+
+                for (var i = 0; i < parkingSpots.length; i++) {
+                    var addressText = parkingSpots[i].querySelector('strong').textContent.toLowerCase();
+
+                    if (addressText.includes(searchInput)) {
+                        parkingSpots[i].style.display = "block"; // Show matching parking spot
+                    } else {
+                        parkingSpots[i].style.display = "none"; // Hide non-matching parking spot
+                    }
+                }
+            }
+
+
+
+
             function addParkingSpot() {
-                var address = document.getElementById("address").value;
+                var address = document.getElementById("address").value + ' provo';
                 var rate = document.getElementById("rate").value;
-                var name = document.getElementById("name").value;
 
                 // Create a new parking spot listing
                 var newSpot = document.createElement("div");
                 newSpot.className = "parking-spot";
-                newSpot.innerHTML = `<strong>${name}</strong><br>Address: ${address}<br>Rate: ${rate}`;
+                newSpot.innerHTML = `<strong>${address}</strong><br>${rate}`;
 
                 // Add "Buy Now" button to the new parking spot listing
                 var buyNowButton = document.createElement("button");
@@ -97,6 +114,9 @@
                 buyNowButton.textContent = "Buy Now";
                 buyNowButton.addEventListener("click", function () {
                     // Remove the parking spot listing from the feed
+                    openCheckoutPage(address, rate);
+
+            
                     var parkingFeed = document.getElementById("parking-feed");
                     parkingFeed.removeChild(newSpot);
 
@@ -105,6 +125,16 @@
 
                     alert(`You have purchased the parking spot at ${address} for ${rate}. Thank you!`);
                 });
+
+                function openCheckoutPage(address, rate, venmo) {
+                    // Construct the URL with parameters
+                    var checkoutUrl = `checkout.html?address=${encodeURIComponent(address)}&rate=${encodeURIComponent(rate)}}`;
+
+                    // Open the checkout page in a new window
+                    window.open(checkoutUrl, '_blank');
+                }
+
+
 
                 // Create a container for the Buy Now button
                 var buttonContainer = document.createElement("div");
@@ -131,10 +161,13 @@
                 <input type="text" id="address" name="address" required><br>
                 <label for="rate">Price/Time of Availability:</label>
                 <input type="text" id="rate" name="rate" required><br>
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required><br>
                 <button type="button" onclick="addParkingSpot()">Add Parking Spot</button>
             </form>
+        </div>
+
+        <div id="search-bar">
+            <label for="search">Search by Address:</label>
+            <input type="text" id="search" oninput="filterParkingSpots()" placeholder="Enter address...">
         </div>
 
         <h2>Parking Feed</h2><br>
