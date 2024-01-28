@@ -63,6 +63,10 @@ app.get("/map", async (req, res) => {
   res.render("map");
 });
 
+app.get("/auth/map", async (req, res) => {
+  res.render("map");
+});
+
 app.get("/", (req, res) => {
   res.render("map");
 });
@@ -132,25 +136,33 @@ async function getUser(username) {
   return userResult[0];
 }
 
-async function createUserAuth(username, password, firstName, lastName) {
+async function createUserAuth(username, password, firstName, lastName, venmo, phoneNumber) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const host = {
     FirstName: firstName,
     LastName: lastName,
+    PhoneNumber: phoneNumber,
   };
 
-  const userAuth = await db.into('Hosts').insert(host);
+  const userAuth = await db('Hosts').insert(host).returning('HostID');
 
-  if (userAuth[0]) {
+  if (userAuth[0] && userAuth[0]['HostID']) {
     const auth = {
-      HostID: userAuth[0],
+      HostID: parseInt(userAuth[0]['HostID']),
       Email: username,
-      Password: password,
+      Password: passwordHash,
       AuthToken: uuid(),
     };
 
     await db.into('AuthInfo').insert(auth);
+
+    const payInfo = {
+      UserID: parseInt(userAuth[0]['HostID']),
+      Venmo: venmo,
+    };
+
+    await db.into('PaymentInfo').insert(payInfo);
     
     return auth;
   }
@@ -162,7 +174,7 @@ apiRouter.post('/createUser', async (req, res) => {
   if (await getUser(req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUserAuth(req.body.username, req.body.password, req.body.firstName, req.body.lastName);
+    let user = await createUserAuth(req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.venmo, req.body.phoneNumber);
     
     if (user == undefined) {
       user = {Username: undefined};
@@ -189,10 +201,10 @@ app.get('/user/me', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-apiRouter.post("/auth/deleteUser", async (req, res) => { 
-  await db("AuthInfo").where("Email", req.body['username']).del()
-  res.status(200)
-});
+// apiRouter.post("/auth/deleteUser", async (req, res) => { 
+//   await db("AuthInfo").where("Email", req.body['username']).del()
+//   res.status(200)
+// });
 
 apiRouter.delete('/auth/logout', (_req, res) => {
   res.clearCookie('token');

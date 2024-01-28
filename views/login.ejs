@@ -39,11 +39,16 @@
     <div id="loginRegisterBox" class="login-container">
         <button type="button" onclick="showLogin();">Login</button>
         <br>
+        <br>
+        <br>
         <button type="button" onclick="showRegister();">Sign Up</button>
     </div>
     <div id="registerBoxes">
         <div id="registerLeft" class="login-container">
-            <h2>Look For Spots to Rent</h2>
+            <span id="signupHeader">
+                <button type="button" onclick="showLoginRegister();">Back</button>
+                <h2>Sign Up</h2>
+            </span>
             <form action="#" method="post">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" required>
@@ -58,40 +63,28 @@
                 <label for="lastName">Last Name</label>
                 <input type="text" id="lastName" name="lastName" required>
         
-                <button type="button" onclick="loginUser();">Login</button>
-                <button type="button" onclick="registerUser();">Register</button>
-            </form>
-        </div>
-        <div id="registerRight" class="login-container">
-            <h2>Rent Out My Spot</h2>
-            <form action="#" method="post">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" required>
+                <label for="venmo">Venmo</label>
+                <input type="text" id="venmo" name="venmo" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <p class="login-error-text" id="loginError"></p>
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required>
 
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
-
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
-        
-                <button type="button" onclick="loginUser();">Login</button>
-                <button type="button" onclick="registerUser();">Register</button>
+                <button type="button" onclick="registerUser();">Sign Up</button>
             </form>
         </div>
     </div>
     <div id="loginBox" class="login-container">
-        <h2>Login</h2>
+            <span id="loginHeader">
+                <button type="button" onclick="showLoginRegister();">Back</button>
+                <h2>Login</h2>
+            </span>
         <form action="#" method="post">
             <label for="email">Email</label>
             <input type="text" id="email" name="email" required>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
-            <p class="login-error-text" id="loginError"></p>
+            <p class="login-error-text" id="loginErrorText"></p>
 
             <button type="button" onclick="loginUser();">Login</button>
         </form>
@@ -99,8 +92,7 @@
     <br><br><br><br><br><br><br><br>
     <footer class="py-3" style="background-color: #00a0e089">
         <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white"><a style="color: white;" onmouseover="this.style.color='gray'" onmouseleave="this.style.color='white'"
-                href="/login">Employee Login</a>&thinsp; &thinsp; &thinsp; &thinsp; &thinsp;Copyright &copy; Provo City SMUMH 2023</p>
+            <p class="m-0 text-center text-white">&thinsp; &thinsp; &thinsp; &thinsp; &thinsp;Provo Parking 2024&thinsp; &thinsp; &thinsp; &thinsp; &thinsp;</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

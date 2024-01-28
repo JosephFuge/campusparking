@@ -81,7 +81,7 @@ button:hover {
 }
 
 #registerBoxes {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -95,3 +95,27 @@ button:hover {
     margin: auto;
     width: 100%;
 } */
+    
+footer {
+    width: 100%;
+}
+
+#signupHeader, #loginHeader {
+    display: flex;
+    justify-content: space-between; /* This spreads out the child elements */
+    align-items: center; /* This vertically centers the child elements */
+    width: 100%;
+}
+
+#signupHeader > *, #loginHeader > * { 
+    display: inline;
+}
+
+#signupHeader > button, #loginHeader > * {
+    margin-right: auto; 
+}
+
+#signupHeader > h2, #loginHeader > * {
+    margin-left: 20px; /* Adjust as needed */
+    margin-right: auto;
+}
