@@ -7,12 +7,6 @@
     <title>Provo Parking Solution</title>
     <!-- Linking an external stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
-</head>
-
-<body>
-    <h1>Provo Parking Solution</h1>
-    <div id="map-container">
-        <!-- The map will be displayed here -->
         <script>
             var map;
             var infoWindow;
@@ -148,10 +142,15 @@
 
                 // Call the geocodeAddress function to place a marker on the map
                 geocodeAddress(address, buyNowButton);
-            
+            }
         </script>
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYKlll1uqfnRYvQ0AP5zNWRIpMJyIdayo&callback=initMap&libraries=maps,marker&v=beta"></script>
+</head>
 
+<body>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYKlll1uqfnRYvQ0AP5zNWRIpMJyIdayo&callback=initMap&libraries=maps,marker&v=beta"></script>
+    <h1>Provo Parking Solution</h1>
+    <div id="map-container">
+        <!-- The map will be displayed here -->
     </div>
 
     <div id="feed-container">
