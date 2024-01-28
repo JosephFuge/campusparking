@@ -14,7 +14,7 @@ body {
     margin: 95px auto;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
+    max-width: 300px;
 }
 
 h2 {
@@ -107,6 +107,11 @@ footer {
     width: 100%;
 }
 
+.center {
+    width: 50%;
+    margin: auto;
+}
+
 #signupHeader > *, #loginHeader > * { 
     display: inline;
 }
@@ -116,6 +121,5 @@ footer {
 }
 
 #signupHeader > h2, #loginHeader > * {
-    margin-left: 20px; /* Adjust as needed */
     margin-right: auto;
 }
