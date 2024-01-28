@@ -1,17 +1,18 @@
 /*
-    Provo Parking
+    Parker
     Will Koelliker, Grant Gwin, Joseph Fuge
 */
 
 import express from "express";
 import { fileURLToPath } from 'url';
 const app = express();
+app.use(express.urlencoded({extended: true}));
+
 import {join, dirname} from "path";
 import config from './dbConfig.json' assert { type: 'json' };
 const PORT_NUM = process.env.PORT || 3000;
-app.use(express.urlencoded({extended: true}));
-import {v4 as uuid} from 'uuid';
 
+import {v4 as uuid} from 'uuid';
 import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
 
@@ -37,25 +38,14 @@ app.get("/index", (req, res) => {
    res.render("index");
 });
 
-// app.get("/unauth", (req, res) => {
-//   res.render("unauth");
-// });
-
-
 // Frontend static middleware
 app.use(express.static(join(__dirname, 'public')));
 
 app.use(express.json());
 
-// app.use('/shared', express.static(path.join(__dirname, 'shared')));
-
 app.use('/map', checkAuth);
 
 app.set("view engine", "ejs");
-
-// app.use((_req, res) => {
-//   res.sendFile('index.html', { root: 'public' });
-// });
 
 app.use(express.json());
 
